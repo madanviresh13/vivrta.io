@@ -68,7 +68,7 @@
   .pricing { padding: 4rem; background: #161628; }
   .pricing h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; color: #fff; }
   .pricing-sub { font-size: 0.92rem; color: rgba(255,255,255,0.45); margin-bottom: 2.5rem; }
-  .pricing-card { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.2); border-radius: 12px; padding: 2rem; }
+  .pricing-card { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.2); border-radius: 12px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   .price { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; color: #fff; }
   .price-label { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
   .price-features { list-style: none; }
@@ -228,9 +228,11 @@
   <h2>Simple, transparent pricing</h2>
   <p class="pricing-sub">No subscription. No system access required. Pay per engagement.</p>
   <div class="pricing-card">
-    <div class="price">Pricing on request</div>
-    <div class="price-label">Contact us for a tailored quote based on your requirements</div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="btn-primary" style="margin-top:1.2rem; margin-bottom:1.5rem; display:inline-flex;">Request a quote →</a>
+    <div>
+      <div class="price">Pricing on request</div>
+      <div class="price-label">Contact us for a tailored quote based on your requirements</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="btn-primary" style="margin-top:1.2rem; display:inline-flex;">Request a quote →</a>
+    </div>
     <ul class="price-features">
       <li>Full S/4HANA readiness or Z code analysis</li>
       <li>Executive Brief for leadership</li>
