@@ -98,23 +98,31 @@
     .pricing-inner { grid-template-columns: 1fr; }
     footer { padding: 1.5rem; }
   }
+
+  .typewriter-wrap { display: inline; }
+  .typewriter-static { color: #fff; }
+  .typewriter-animated { color: #66BEE3; }
+  .cursor { display: inline-block; width: 3px; height: 0.85em; background: #66BEE3; margin-left: 2px; vertical-align: middle; animation: blink 0.75s step-end infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">Vivrta<span>.IO</span></div>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform" target="_blank" class="nav-cta">Request an Analysis</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="nav-cta">Get in touch</a>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
     <div class="hero-tag">SAP Code Analysis · Human Reviewed</div>
-    <h1>Know exactly what your SAP custom code does, <em>before it becomes a problem</em></h1>
+    <h1>
+      <span class="typewriter-static">Know exactly what your SAP custom code does, </span><span class="typewriter-animated" id="typewriter-text"></span><span class="cursor" id="cursor"></span>
+    </h1>
     <p>Vivrta.IO analyses your SAP ABAP programs and delivers a plain-English report reviewed by senior SAP professionals. Understand your risk, scope your remediation, and brief your leadership in days, not weeks.</p>
     <div class="hero-actions">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform" target="_blank" class="btn-primary">Request an Analysis →</a>
-      <a href="#sample" class="btn-secondary">See a sample report →</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="btn-primary">Submit Your ABAP Code →</a>
+      <a href="#sample" class="btn-secondary">Download a Sample Report →</a>
     </div>
     <div style="text-align:center;">
       <div class="deadline-badge">⚠ SAP ECC maintenance ends 2027. The earlier you assess, the more options you have.</div>
@@ -256,7 +264,7 @@
 <section class="contact">
   <h2>Ready to understand your SAP custom code?</h2>
   <p>Whether you have one program to review or an entire estate to assess, get in touch and we will explain exactly how Vivrta.IO can help.</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform" target="_blank" class="contact-email">Request an Analysis →</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="contact-email">Get in touch →</a>
   <p class="turnaround">Typical turnaround: 3 to 5 business days per engagement</p>
 </section>
 
@@ -264,6 +272,46 @@
   <p>Vivrta.IO: SAP Code Analysis, Powered by AI, Reviewed by Experts</p>
   <p>AI-generated analysis. Every report reviewed by a qualified SAP professional before delivery.</p>
 </footer>
+
+
+<script>
+  const phrases = [
+    "before it becomes a problem.",
+    "before your S/4HANA migration.",
+    "before your next audit.",
+    "before the 2027 deadline."
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  let pauseCounter = 0;
+  const el = document.getElementById('typewriter-text');
+
+  function type() {
+    const current = phrases[phraseIndex];
+    if (!deleting) {
+      el.textContent = current.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+      setTimeout(type, 55);
+    } else {
+      el.textContent = current.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(type, 400);
+        return;
+      }
+      setTimeout(type, 30);
+    }
+  }
+  setTimeout(type, 800);
+</script>
 
 </body>
 </html>
