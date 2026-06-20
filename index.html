@@ -58,11 +58,11 @@
   .sample h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.4rem; color: #fff; }
   .sample p { font-size: 0.875rem; color: rgba(255,255,255,0.55); }
 
-  .pricing { padding: 4rem; background: #161628; }
+  .pricing { padding: 4rem; background: #161628; overflow: visible; }
   .pricing-inner { display: flex; flex-direction: column; gap: 2rem; }
   .pricing h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; color: #fff; }
   .pricing-sub { font-size: 0.92rem; color: rgba(255,255,255,0.45); margin-bottom: 2rem; }
-  .pricing-card { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.2); border-radius: 12px; padding: 2rem; display: flex; flex-direction: row; gap: 3rem; align-items: flex-start; } .pricing-left { min-width: 220px; }
+  .pricing-card { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.2); border-radius: 12px; padding: 2rem; display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; } .pricing-left { min-width: 0; }
   .price { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.3rem; color: #66BEE3; }
   .price-label { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
   .price-features { list-style: none; }
