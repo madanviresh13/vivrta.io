@@ -96,7 +96,7 @@
     .deliverables { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
     .sample { padding: 2rem 1.5rem; flex-direction: column; }
-    .pricing-card { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
     footer { padding: 1.5rem; }
   }
 </style>
@@ -229,21 +229,25 @@
   <h2>Simple, transparent pricing</h2>
   <p class="pricing-sub">No subscription. No system access required. Pay per engagement.</p>
   <div class="pricing-card">
-    <div>
-      <div class="price">Pricing on request</div>
-      <div class="price-label">Contact us for a tailored quote based on your requirements</div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="btn-primary" style="margin-top:1.2rem; display:inline-flex;">Request a quote →</a>
+    <div class="pricing-grid">
+      <div>
+        <div class="price">Pricing on request</div>
+        <div class="price-label">Contact us for a tailored quote based on your requirements</div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="btn-primary" style="margin-top:1.2rem; display:inline-block; white-space:nowrap;">Request a quote →</a>
+      </div>
+      <ul class="price-features">
+        <li>Full S/4HANA readiness or Z code analysis</li>
+        <li>Executive Brief for leadership</li>
+        <li>RED, AMBER and GREEN findings with evidence</li>
+      </ul>
+      <ul class="price-features">
+        <li>Remediation scope estimate in developer days</li>
+        <li>Human expert review and sign-off</li>
+        <li>Delivered within 3 to 5 business days</li>
+      </ul>
     </div>
-    <ul class="price-features">
-      <li>Full S/4HANA readiness or Z code analysis</li>
-      <li>Executive Brief for leadership</li>
-      <li>RED, AMBER and GREEN findings with evidence</li>
-      <li>Remediation scope estimate in developer days</li>
-      <li>Human expert review and sign-off</li>
-      <li>Delivered within 3 to 5 business days</li>
-    </ul>
-    <p class="price-note">Larger estates and bundle pricing available on request.</p>
   </div>
+  <p class="price-note" style="margin-top:1rem;">Larger estates and bundle pricing available on request.</p>
 </section>
 
 <hr class="divider">
