@@ -360,7 +360,20 @@ function wgtDrop(e) {
   r.readAsText(f);
 }
 
-function wgtRunDemo() { wgtCode = DEMO; wgtRun(); }
+function wgtRunDemo() {
+  wgtShow('analysing');
+  setTimeout(function() {
+    wgtShowBrief({
+      title: 'FI Depreciation Batch Programme — Z_FI_DEPRECIATION_RUN',
+      body: 'This programme processes fixed asset depreciation across your estate and writes calculated values back to the asset ledger. It runs as a background batch job, typically at month-end or year-end close.',
+      hook: 'Most critical issue: this programme commits financial data to the ledger inside a processing loop — if it fails halfway through, earlier postings are permanently recorded and later ones are not, leaving your books in an inconsistent state.',
+      red: 2,
+      amber: 3,
+      green: 5,
+      banner: '2 issues found that could cause incorrect financial postings in S/4HANA.'
+    });
+  }, 2000);
+}
 
 function wgtRun() {
   wgtShow('analysing');
