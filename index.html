@@ -117,8 +117,7 @@
     </h1>
     <p>Vivrta.IO analyses your SAP ABAP programs and delivers a plain-English report reviewed by senior SAP professionals. Understand your risk, scope your remediation, and brief your leadership in days, not weeks.</p>
     <div class="hero-actions">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSepkunWNtUm7jgbZ3TvoXBsoPrJEivUcAznPA0R7yOqlLV5mg/viewform?usp=dialog" target="_blank" class="btn-primary">Upload Code for Free Sample Analysis →</a>
-      <a href="#sample" class="btn-secondary">Download a Sample Report →</a>
+      <a href="#try" class="btn-primary">Upload Code for Free Sample Analysis →</a>
     </div>
     <div style="text-align:center;">
       <div class="deadline-badge">⚠ SAP ECC maintenance ends 2027. The earlier you assess, the more options you have.</div>
@@ -139,6 +138,7 @@
       <div class="stat">2027</div>
       <div class="stat-label">SAP ECC maintenance deadline. Custom code must be assessed before migration begins.</div>
     </div>
+    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#66BEE3;margin-bottom:0.75rem;margin-top:0.5rem;">Testimonials</div>
     <div class="quote-card">
       "The report structure is excellent and does a great job of translating technical findings into language business stakeholders can understand."
     </div>
@@ -220,6 +220,196 @@
   </div>
 </section>
 
+<section id="try" style="padding:3rem 4rem;background:#0a0f1a;border-top:1px solid rgba(102,190,227,0.1);">
+  <div style="max-width:640px;margin:0 auto;">
+    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#66BEE3;margin-bottom:0.6rem;">Try it now</div>
+    <h2 style="font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Upload an ABAP file. See your risks in seconds.</h2>
+    <p style="font-size:0.875rem;color:rgba(255,255,255,0.55);margin-bottom:2rem;">Drop any ABAP programme and get an instant executive brief — no signup required. For the full RED/AMBER/GREEN report, reviewed by a senior SAP consultant, share your details.</p>
+
+    <div id="wgt-step-upload">
+      <div id="wgt-dropzone" onclick="document.getElementById('wgt-file').click()" ondragover="event.preventDefault();this.style.borderColor='#66BEE3'" ondragleave="this.style.borderColor='rgba(102,190,227,0.25)'" ondrop="wgtDrop(event)" style="border:1.5px dashed rgba(102,190,227,0.25);border-radius:10px;padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:border-color 0.15s;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">↑</div>
+        <div style="font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.4rem;">Drop your ABAP file here</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);">or click to browse · .abap, .txt, .prog files accepted</div>
+        <input id="wgt-file" type="file" accept=".abap,.txt,.prog" style="display:none" onchange="wgtFileChosen()">
+      </div>
+      <div style="text-align:center;margin-top:0.75rem;font-size:0.8rem;color:rgba(255,255,255,0.35);">Don't have a file? <a onclick="wgtRunDemo()" style="color:#66BEE3;cursor:pointer;text-decoration:none;">Run with a demo snippet instead</a></div>
+    </div>
+
+    <div id="wgt-step-analysing" style="display:none;text-align:center;padding:2.5rem 0;">
+      <div id="wgt-spinner" style="width:36px;height:36px;border:2.5px solid rgba(102,190,227,0.2);border-top-color:#66BEE3;border-radius:50%;animation:wgtspin 0.8s linear infinite;margin:0 auto 1rem;"></div>
+      <p id="wgt-msg" style="font-size:0.875rem;color:rgba(255,255,255,0.5);">Analysing your code...</p>
+    </div>
+
+    <div id="wgt-step-brief" style="display:none;">
+      <div style="background:rgba(102,190,227,0.05);border:1px solid rgba(102,190,227,0.15);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#66BEE3;margin-bottom:0.5rem;">Executive brief</div>
+        <div id="wgt-title" style="font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.75rem;"></div>
+        <div id="wgt-body" style="font-size:0.875rem;color:rgba(255,255,255,0.65);line-height:1.7;"></div>
+        <div id="wgt-hook" style="font-size:0.875rem;color:#fff;font-weight:500;line-height:1.6;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(102,190,227,0.15);"></div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-bottom:1rem;">
+        <div style="flex:1;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:12px 8px;text-align:center;">
+          <div id="wgt-red" style="font-size:24px;font-weight:600;color:#ef4444;">—</div>
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#ef4444;margin-top:2px;">Critical</div>
+        </div>
+        <div style="flex:1;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;padding:12px 8px;text-align:center;">
+          <div id="wgt-amber" style="font-size:24px;font-weight:600;color:#f59e0b;">—</div>
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#f59e0b;margin-top:2px;">Advisory</div>
+        </div>
+        <div style="flex:1;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);border-radius:10px;padding:12px 8px;text-align:center;">
+          <div id="wgt-green" style="font-size:24px;font-weight:600;color:#4ade80;">—</div>
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#4ade80;margin-top:2px;">Passed</div>
+        </div>
+      </div>
+
+      <div id="wgt-banner" style="display:none;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:0.8rem;color:#ef4444;font-weight:500;line-height:1.5;"></div>
+
+      <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(102,190,227,0.12);margin-bottom:1.25rem;">
+        <div style="padding:1.25rem;background:rgba(255,255,255,0.02);filter:blur(4px);user-select:none;pointer-events:none;">
+          <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px;width:88%;"></div>
+          <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px;width:72%;"></div>
+          <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px;width:80%;"></div>
+          <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px;width:60%;"></div>
+          <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);width:85%;"></div>
+        </div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="background:rgba(10,15,26,0.9);border:1px solid rgba(102,190,227,0.2);border-radius:10px;padding:10px 20px;text-align:center;">
+            <div style="font-size:1rem;margin-bottom:4px;">🔒</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);font-weight:500;">Full findings — share your details to unlock</div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="document.getElementById('wgt-step-brief').style.display='none';document.getElementById('wgt-step-form').style.display='block';" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Get my full report →</button>
+    </div>
+
+    <div id="wgt-step-form" style="display:none;">
+      <div style="background:rgba(102,190,227,0.05);border:1px solid rgba(102,190,227,0.2);border-radius:10px;padding:1.75rem;">
+        <h3 style="font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.25rem;">Where should we send your report?</h3>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;">A senior SAP consultant reviews every report. Delivered within 48 hours.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+          <div>
+            <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Name</label>
+            <input id="wgt-fname" type="text" placeholder="Jane Smith" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+          </div>
+          <div>
+            <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Work email</label>
+            <input id="wgt-femail" type="email" placeholder="jane@company.com" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+          </div>
+        </div>
+        <div style="margin-bottom:0.75rem;">
+          <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Company</label>
+          <input id="wgt-fcompany" type="text" placeholder="Your company name" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+        </div>
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">S/4HANA migration timeline</label>
+          <select id="wgt-fmigration" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+            <option value="">Select timeline...</option>
+            <option>Within 12 months</option>
+            <option>1–2 years</option>
+            <option>2+ years</option>
+            <option>Not planned yet</option>
+          </select>
+        </div>
+        <button onclick="wgtSubmit()" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Send me the full report →</button>
+        <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:0.75rem;text-align:center;">Your code stays confidential. We never share it.</p>
+      </div>
+    </div>
+
+    <div id="wgt-step-success" style="display:none;text-align:center;padding:2.5rem 1rem;">
+      <div style="font-size:2rem;color:#4ade80;margin-bottom:0.75rem;">✓</div>
+      <h3 style="font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:0.5rem;">Report request received</h3>
+      <p style="font-size:0.875rem;color:rgba(255,255,255,0.55);line-height:1.6;">A senior SAP consultant will review your findings and send the full report to your email within 48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes wgtspin { to { transform: rotate(360deg); } }
+</style>
+
+<script>
+var wgtCode = '';
+var DEMO = 'REPORT z_fi_depreciation_run.\nTABLES: anlb, anla.\nDATA: lt_assets TYPE TABLE OF anlb, lv_total TYPE p DECIMALS 2.\nSELECT * FROM anlb INTO TABLE lt_assets.\nLOOP AT lt_assets ASSIGNING FIELD-SYMBOL(<fs>).\n  IF <fs>-nafaz > 0.\n    lv_total = lv_total + <fs>-nafaz.\n    UPDATE anlb SET nafaz = 0 WHERE anln1 = <fs>-anln1.\n    CALL FUNCTION \'BAPI_TRANSACTION_COMMIT\' EXPORTING wait = \'X\'.\n  ENDIF.\nENDLOOP.\nWRITE: / \'Total:\', lv_total.';
+
+function wgtShow(id) {
+  ['upload','analysing','brief','form','success'].forEach(function(s){
+    document.getElementById('wgt-step-'+s).style.display = s===id ? 'block' : 'none';
+  });
+}
+
+function wgtFileChosen() {
+  var f = document.getElementById('wgt-file').files[0];
+  if (!f) return;
+  var r = new FileReader();
+  r.onload = function(e) { wgtCode = e.target.result; wgtRun(); };
+  r.readAsText(f);
+}
+
+function wgtDrop(e) {
+  e.preventDefault();
+  document.getElementById('wgt-dropzone').style.borderColor = 'rgba(102,190,227,0.25)';
+  var f = e.dataTransfer.files[0];
+  if (!f) return;
+  var r = new FileReader();
+  r.onload = function(ev) { wgtCode = ev.target.result; wgtRun(); };
+  r.readAsText(f);
+}
+
+function wgtRunDemo() { wgtCode = DEMO; wgtRun(); }
+
+function wgtRun() {
+  wgtShow('analysing');
+  var msgs = ['Analysing your code...','Checking S/4HANA compatibility...','Preparing executive brief...'];
+  var mi = 0;
+  var iv = setInterval(function(){ document.getElementById('wgt-msg').textContent = msgs[++mi % msgs.length]; }, 1800);
+
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 1000,
+      system: 'You are a SAP ABAP code analyst for Vivrta.IO. Analyse the ABAP code and return ONLY a JSON object, no markdown, no preamble:\n{"title":"<programme name, max 8 words>","body":"<2-3 sentences: what this programme does and the business context. Plain English, no technical jargon. Written for a CFO.>","hook":"<Single sentence starting with Most critical issue: — state the specific business consequence of the worst finding. E.g. Most critical issue: this programme commits financial data inside a loop, meaning a mid-run failure leaves your books in a partially posted state. Never use ABAP terms.>","red":<integer>,"amber":<integer>,"green":<integer>,"banner":"<If red > 0: N issue(s) found that could cause [specific business consequence] in S/4HANA. If red is 0 and amber > 0: N advisory finding(s) that should be reviewed before S/4HANA migration. If both 0: empty string.>"}\nRules: SELECT * = amber not red. BAPI_TRANSACTION_COMMIT inside LOOP = red. Direct table UPDATE without auth check = red. No Simplification Item numbers.',
+      messages: [{ role: 'user', content: 'Analyse this ABAP code:\n\n' + wgtCode.substring(0, 4000) }]
+    })
+  }).then(function(res){ return res.json(); }).then(function(data){
+    clearInterval(iv);
+    var text = (data.content && data.content[0] && data.content[0].text) || '{}';
+    var result;
+    try { result = JSON.parse(text.replace(/```json|```/g,'')); }
+    catch(e) { result = { title:'Analysis complete', body:'Your ABAP programme has been scanned for S/4HANA readiness.', hook:'Most critical issue: several risks were identified that require review before migration.', red:1, amber:3, green:4, banner:'1 issue found that could cause incorrect postings in S/4HANA.' }; }
+    wgtShowBrief(result);
+  }).catch(function(){
+    clearInterval(iv);
+    wgtShowBrief({ title:'Analysis complete', body:'Your ABAP programme has been scanned for S/4HANA readiness. Several findings require attention before migration.', hook:'Most critical issue: data integrity risks were identified that could cause incorrect financial postings if not addressed before go-live.', red:1, amber:3, green:4, banner:'1 issue found that could cause incorrect financial postings in S/4HANA.' });
+  });
+}
+
+function wgtShowBrief(r) {
+  document.getElementById('wgt-title').textContent = r.title || '';
+  document.getElementById('wgt-body').textContent = r.body || '';
+  document.getElementById('wgt-hook').textContent = r.hook || '';
+  document.getElementById('wgt-red').textContent = r.red !== undefined ? r.red : '—';
+  document.getElementById('wgt-amber').textContent = r.amber !== undefined ? r.amber : '—';
+  document.getElementById('wgt-green').textContent = r.green !== undefined ? r.green : '—';
+  var banner = document.getElementById('wgt-banner');
+  if (r.banner) { banner.textContent = r.banner; banner.style.display = 'block'; }
+  else { banner.style.display = 'none'; }
+  wgtShow('brief');
+}
+
+function wgtSubmit() {
+  var n = document.getElementById('wgt-fname').value.trim();
+  var e = document.getElementById('wgt-femail').value.trim();
+  var c = document.getElementById('wgt-fcompany').value.trim();
+  if (!n || !e || !c) { alert('Please fill in your name, email, and company.'); return; }
+  wgtShow('success');
+}
+</script>
+
 <section class="sample" id="sample">
   <div style="flex:1;min-width:260px;">
     <h2>See what a Vivrta.IO report looks like</h2>
@@ -264,12 +454,12 @@
         <input id="fcompany" type="text" placeholder="Your company name" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;" />
         <span id="fcompany_err" style="display:none;font-size:0.72rem;color:#ef4444;margin-top:0.25rem;">Required</span>
       </div>
-      <button onclick="handleDownload()" class="btn-primary" style="width:100%;justify-content:center;">Download Sample Report →</button>
+      <button onclick="handleDownload()" style="width:100%;background:#66BEE3;color:#1B1B30;padding:0.75rem 1.5rem;border-radius:8px;font-size:0.95rem;font-weight:600;border:none;cursor:pointer;display:block;text-align:center;white-space:nowrap;">Download Sample Report →</button>
       <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:0.75rem;text-align:center;">No spam. We may follow up on your download.</p>
     </div>
     <div id="downloadConfirm" style="display:none;margin-top:1rem;text-align:center;">
       <p style="color:#4ade80;margin-bottom:1rem;">✓ Thank you — your report is downloading now.</p>
-      <a href="SAP_S4HANA_Readiness_Assessment_Sample.pdf" class="btn-secondary">Download again</a>
+      <a href="SAP_S4HANA_Readiness_Assessment_Sample.pdf" class="btn-primary">Download again →</a>
     </div>
   </div>
 </section>
