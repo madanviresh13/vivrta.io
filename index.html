@@ -366,7 +366,7 @@ function wgtRun() {
   var mi = 0;
   var iv = setInterval(function(){ document.getElementById('wgt-msg').textContent = msgs[++mi % msgs.length]; }, 1800);
 
-  fetch('https://api.anthropic.com/v1/messages', {
+  fetch('https://vivrta-api-proxy.madan-viresh.workers.dev', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
