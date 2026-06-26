@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vivrta.IO - SAP Code Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('W77KJXa8QeTdS1Q83');</script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: #1B1B30; color: #fff; }
@@ -405,7 +407,11 @@ function wgtSubmit() {
   var n = document.getElementById('wgt-fname').value.trim();
   var e = document.getElementById('wgt-femail').value.trim();
   var c = document.getElementById('wgt-fcompany').value.trim();
+  var m = document.getElementById('wgt-fmigration').value;
   if (!n || !e || !c) { alert('Please fill in your name, email, and company.'); return; }
+  emailjs.send('service_vjirrqb', 'template_l8fb6yl', {
+    name: n, email: e, company: c, migration: m || 'Not specified', source: 'Widget — Full Report Request'
+  });
   wgtShow('success');
 }
 </script>
@@ -483,6 +489,10 @@ function handleDownload() {
   });
 
   if (!valid) return;
+
+  emailjs.send('service_vjirrqb', 'template_l8fb6yl', {
+    name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), migration: 'Not specified', source: 'Sample Report Download'
+  });
 
   var a = document.createElement('a');
   a.href = 'SAP_S4HANA_Readiness_Assessment_Sample.pdf';
