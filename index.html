@@ -284,7 +284,7 @@
         </div>
       </div>
 
-      <button onclick="document.getElementById('wgt-step-brief').style.display='none';document.getElementById('wgt-step-form').style.display='block';" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Get my full report →</button>
+      <button onclick="var s=document.getElementById('wgt-step-brief');var f=document.getElementById('wgt-step-form');var t=s.getBoundingClientRect().top+window.pageYOffset;s.style.display='none';f.style.display='block';window.scrollTo({top:t,behavior:'instant'});" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Get my full report →</button>
     </div>
 
     <div id="wgt-step-form" style="display:none;">
@@ -307,12 +307,12 @@
         </div>
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">S/4HANA migration timeline</label>
-          <select id="wgt-fmigration" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
-            <option value="">Select timeline...</option>
-            <option>Within 12 months</option>
-            <option>1–2 years</option>
-            <option>2+ years</option>
-            <option>Not planned yet</option>
+          <select id="wgt-fmigration" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;appearance:auto;">
+            <option value="" style="background:#1a2535;color:#fff;">Select timeline...</option>
+            <option style="background:#1a2535;color:#fff;">Within 12 months</option>
+            <option style="background:#1a2535;color:#fff;">1–2 years</option>
+            <option style="background:#1a2535;color:#fff;">2+ years</option>
+            <option style="background:#1a2535;color:#fff;">Not planned yet</option>
           </select>
         </div>
         <button onclick="wgtSubmit()" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Send me the full report →</button>
