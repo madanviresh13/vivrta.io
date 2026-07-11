@@ -8,84 +8,97 @@
 <script>emailjs.init('W77KJXa8QeTdS1Q83');</script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #1B1B30; color: #fff; }
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; border-bottom: 1px solid rgba(102,190,227,0.15); }
-  .logo { font-size: 1.2rem; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
-  .logo span { color: #66BEE3; }
-  .nav-cta { background: #66BEE3; color: #1B1B30; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #14142C; color: #fff; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; border-bottom: 1px solid rgba(112,202,246,0.15); }
+  .logo { display: flex; align-items: center; gap: 0.55rem; font-size: 1.2rem; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+  .logo img { height: 26px; width: auto; display: block; }
+  .logo span { color: #70CAF6; }
+  .nav-cta { background: #70CAF6; color: #14142C; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
 
   .hero { padding: 5rem 4rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .hero-left { min-height: 420px; }
   .hero-trust { align-self: start; position: sticky; top: 2rem; }
-  .hero-tag { display: inline-block; background: rgba(102,190,227,0.1); color: #66BEE3; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; border: 1px solid rgba(102,190,227,0.25); }
+  .hero-tag { display: inline-block; background: rgba(112,202,246,0.1); color: #70CAF6; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 4px; margin-bottom: 1.5rem; border: 1px solid rgba(112,202,246,0.25); }
   .hero h1 { font-size: 2.8rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.2rem; color: #fff; min-height: 12rem; }
-  .hero h1 em { color: #66BEE3; font-style: normal; }
+  .hero h1 em { color: #70CAF6; font-style: normal; }
   .hero p { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 2rem; }
   .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .btn-primary { background: #66BEE3; color: #1B1B30; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
-  .btn-secondary { color: #66BEE3; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid rgba(102,190,227,0.4); padding-bottom: 2px; }
+  .btn-primary { background: #70CAF6; color: #14142C; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .btn-secondary { color: #70CAF6; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid rgba(112,202,246,0.4); padding-bottom: 2px; }
   .deadline-badge { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: #fca5a5; font-size: 0.78rem; padding: 0.4rem 1.2rem; border-radius: 4px; display: inline-block; text-align: center; }
   .hero-trust { display: flex; flex-direction: column; gap: 1.2rem; }
-  .trust-card { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.12); border-radius: 10px; padding: 1.5rem; }
-  .trust-card .stat { font-size: 2rem; font-weight: 700; color: #66BEE3; line-height: 1; margin-bottom: 0.3rem; }
+  .trust-card { background: rgba(112,202,246,0.05); border: 1px solid rgba(112,202,246,0.12); border-radius: 10px; padding: 1.5rem; }
+  .trust-card .stat { font-size: 2rem; font-weight: 700; color: #70CAF6; line-height: 1; margin-bottom: 0.3rem; }
   .trust-card .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
   .trust-cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .quote-card { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.12); border-radius: 10px; padding: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; font-style: italic; }
+  .quote-card { background: rgba(112,202,246,0.05); border: 1px solid rgba(112,202,246,0.12); border-radius: 10px; padding: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; font-style: italic; }
 
-  .typewriter-animated { color: #66BEE3; }
-  .cursor { display: inline-block; width: 3px; height: 0.85em; background: #66BEE3; margin-left: 2px; vertical-align: middle; animation: blink 0.75s step-end infinite; }
+  .typewriter-animated { color: #70CAF6; }
+  .cursor { display: inline-block; width: 3px; height: 0.85em; background: #70CAF6; margin-left: 2px; vertical-align: middle; animation: blink 0.75s step-end infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-  .divider { border: none; border-top: 1px solid rgba(102,190,227,0.1); margin: 0; }
+  .divider { border: none; border-top: 1px solid rgba(112,202,246,0.1); margin: 0; }
 
   .audience { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
   .audience-card { padding: 3rem 4rem; }
-  .audience-card:first-child { border-right: 1px solid rgba(102,190,227,0.1); }
-  .audience-tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #66BEE3; margin-bottom: 0.8rem; }
+  .audience-card:first-child { border-right: 1px solid rgba(112,202,246,0.1); }
+  .audience-tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #70CAF6; margin-bottom: 0.8rem; }
   .audience-card h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.3; color: #fff; }
   .audience-card p { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 1rem; }
   .audience-card .for-label { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 1.2rem; }
   .audience-card .for-label strong { color: rgba(255,255,255,0.6); font-weight: 500; }
 
-  .what-you-get { padding: 4rem; background: #161628; }
-  .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #66BEE3; margin-bottom: 0.6rem; }
+  .what-you-get { padding: 4rem; background: #111126; }
+  .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #70CAF6; margin-bottom: 0.6rem; }
   .what-you-get h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 2.5rem; letter-spacing: -0.02em; color: #fff; }
-  .deliverables { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .deliverable { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.12); border-radius: 10px; padding: 1.5rem; }
-  .deliverable-num { font-size: 0.72rem; color: #66BEE3; font-weight: 600; margin-bottom: 0.6rem; letter-spacing: 0.06em; }
+  .deliverables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .deliverable { background: rgba(112,202,246,0.05); border: 1px solid rgba(112,202,246,0.12); border-radius: 10px; padding: 1.5rem; }
+  .deliverable-num { font-size: 0.72rem; color: #70CAF6; font-weight: 600; margin-bottom: 0.6rem; letter-spacing: 0.06em; }
   .deliverable h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #fff; }
   .deliverable p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+  .deliverable-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #70CAF6; background: rgba(112,202,246,0.1); border-radius: 4px; padding: 0.15rem 0.5rem; margin-top: 0.8rem; }
+  .review-note { margin-top: 2rem; padding: 1.1rem 1.4rem; background: rgba(112,202,246,0.04); border: 1px solid rgba(112,202,246,0.12); border-radius: 10px; font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+  .review-note strong { color: #fff; }
 
-  .how { padding: 4rem; background: #1B1B30; }
+  .dashboard-showcase { padding: 4rem; background: #14142C; }
+  .dashboard-showcase h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.02em; color: #fff; }
+  .dashboard-showcase > p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 640px; margin-bottom: 2rem; }
+  .dashboard-video-frame { border-radius: 12px; overflow: hidden; border: 1px solid rgba(112,202,246,0.2); box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+  .dashboard-video-frame video { width: 100%; display: block; }
+  .dashboard-views { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
+  .dashboard-view-tag { text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.5); padding: 0.6rem 0.4rem; background: rgba(112,202,246,0.04); border: 1px solid rgba(112,202,246,0.1); border-radius: 6px; }
+  .dashboard-view-tag strong { display: block; color: #70CAF6; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.2rem; }
+
+  .how { padding: 4rem; background: #14142C; }
   .how h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 2.5rem; letter-spacing: -0.02em; color: #fff; }
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .step-num { font-size: 2.5rem; font-weight: 700; color: rgba(102,190,227,0.2); line-height: 1; margin-bottom: 0.8rem; }
+  .step-num { font-size: 2.5rem; font-weight: 700; color: rgba(112,202,246,0.2); line-height: 1; margin-bottom: 0.8rem; }
   .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #fff; }
   .step p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
 
-  .sample { padding: 3rem 4rem; background: rgba(102,190,227,0.05); border-top: 1px solid rgba(102,190,227,0.15); border-bottom: 1px solid rgba(102,190,227,0.15); display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .sample { padding: 3rem 4rem; background: rgba(112,202,246,0.05); border-top: 1px solid rgba(112,202,246,0.15); border-bottom: 1px solid rgba(112,202,246,0.15); display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
   .sample h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.4rem; color: #fff; }
   .sample p { font-size: 0.875rem; color: rgba(255,255,255,0.55); }
 
-  .pricing { padding: 4rem; background: #161628; }
+  .pricing { padding: 4rem; background: #111126; }
   .pricing h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; color: #fff; }
   .pricing-sub { font-size: 0.92rem; color: rgba(255,255,255,0.45); margin-bottom: 2.5rem; }
-  .pricing-card { background: rgba(102,190,227,0.05); border: 1px solid rgba(102,190,227,0.2); border-radius: 12px; padding: 2rem; }
+  .pricing-card { background: rgba(112,202,246,0.05); border: 1px solid rgba(112,202,246,0.2); border-radius: 12px; padding: 2rem; }
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; }
   .price { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; color: #fff; }
   .price-label { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
   .price-features { list-style: none; }
   .price-features li { font-size: 0.9rem; color: rgba(255,255,255,0.65); padding: 0.4rem 0; display: flex; align-items: center; gap: 0.5rem; }
-  .price-features li::before { content: '✓'; color: #66BEE3; font-weight: 700; flex-shrink: 0; }
+  .price-features li::before { content: '✓'; color: #70CAF6; font-weight: 700; flex-shrink: 0; }
   .price-note { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 1.2rem; }
 
-  .contact { padding: 4rem; text-align: center; background: #1B1B30; }
+  .contact { padding: 4rem; text-align: center; background: #14142C; }
   .contact h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.6rem; color: #fff; }
   .contact p { font-size: 0.95rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
-  .contact-email { display: inline-block; background: #66BEE3; color: #1B1B30; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none; }
+  .contact-email { display: inline-block; background: #70CAF6; color: #14142C; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none; }
   .turnaround { font-size: 0.8rem; color: rgba(255,255,255,0.25); margin-top: 1rem; }
 
-  footer { padding: 2rem 4rem; border-top: 1px solid rgba(102,190,227,0.1); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
+  footer { padding: 2rem 4rem; border-top: 1px solid rgba(112,202,246,0.1); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
   footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
 
   @media (max-width: 700px) {
@@ -94,7 +107,7 @@
     .hero h1 { font-size: 2rem; }
     .audience { grid-template-columns: 1fr; }
     .audience-card { padding: 2rem 1.5rem; }
-    .audience-card:first-child { border-right: none; border-bottom: 1px solid rgba(102,190,227,0.1); }
+    .audience-card:first-child { border-right: none; border-bottom: 1px solid rgba(112,202,246,0.1); }
     .what-you-get, .how, .pricing, .contact { padding: 2.5rem 1.5rem; }
     .deliverables { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
@@ -107,7 +120,7 @@
 <body>
 
 <nav>
-  <div class="logo">Vivrta<span>.IO</span></div>
+  <div class="logo"><img src="site_assets/vivrta_mark.png" alt="Vivrta"> Vivrta<span>.IO</span></div>
   <a href="#contact" class="nav-cta">Get in touch</a>
 </nav>
 
@@ -140,12 +153,14 @@
       <div class="stat">2027</div>
       <div class="stat-label">SAP ECC maintenance deadline. Custom code must be assessed before migration begins.</div>
     </div>
-    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#66BEE3;margin-bottom:0.75rem;margin-top:0.5rem;">Testimonials</div>
+    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#70CAF6;margin-bottom:0.75rem;margin-top:0.5rem;">What SAP consultants say, reviewing our reports</div>
     <div class="quote-card">
       "The report structure is excellent and does a great job of translating technical findings into language business stakeholders can understand."
+      <div style="margin-top:0.6rem;font-size:0.78rem;color:rgba(255,255,255,0.4);font-style:normal;">— Senior SAP Consultant, reviewing a sample assessment</div>
     </div>
     <div class="quote-card" style="margin-top:1rem;">
       "Several of the findings are valid areas I would expect to review during an S/4HANA conversion assessment. The business language translation works well."
+      <div style="margin-top:0.6rem;font-size:0.78rem;color:rgba(255,255,255,0.4);font-style:normal;">— SAP Migration Consultant, reviewing a sample assessment</div>
     </div>
   </div>
 </section>
@@ -173,28 +188,48 @@
 
 <section class="what-you-get">
   <div class="section-label">What you receive</div>
-  <h2>Every Vivrta.IO report includes</h2>
+  <h2>Every Vivrta.IO engagement delivers three things</h2>
   <div class="deliverables">
     <div class="deliverable">
       <div class="deliverable-num">01</div>
-      <h3>Executive Brief</h3>
-      <p>A half-page leadership summary in plain English: what the code does, the overall risk rating, and the three most important actions for your leadership team. Written for a Finance Director, not a developer.</p>
+      <h3>Executive Assessment</h3>
+      <p>A boardroom-ready PDF: overall estate readiness, a migration decision for every programme (remediate, rebuild, decommission, or keep), the top risks in plain English, a remediation roadmap, and a signed-off consultant opinion with a confidence rating. Written for a CFO or programme sponsor, not a developer.</p>
+      <div class="deliverable-tag">PDF</div>
     </div>
     <div class="deliverable">
       <div class="deliverable-num">02</div>
-      <h3>Detailed technical findings</h3>
-      <p>Every risk rated RED, AMBER, or GREEN with evidence from the code, business impact, verification steps, and a required fix. No guesswork, no generic advice.</p>
+      <h3>Technical Assessment</h3>
+      <p>Every risk rated RED, AMBER, or GREEN with direct code evidence, business impact, and a required fix — plus cross-programme intelligence showing exactly which shared tables and objects connect your programmes, and a remediation scope estimate in developer days. No guesswork, no generic advice.</p>
+      <div class="deliverable-tag">PDF</div>
     </div>
     <div class="deliverable">
       <div class="deliverable-num">03</div>
-      <h3>Remediation scope estimate</h3>
-      <p>Total developer days to fix every RED and AMBER finding, broken down by category with contingency built in. Give your project manager something concrete to plan with.</p>
+      <h3>Live Dashboard</h3>
+      <p>A private, six-view interactive portal covering your whole estate: portfolio summary, executive narrative, every programme's findings and evidence, anti-patterns across the estate, and a dependency graph of every shared object. One private link, shareable with your whole team.</p>
+      <div class="deliverable-tag">Live link</div>
     </div>
-    <div class="deliverable">
-      <div class="deliverable-num">04</div>
-      <h3>Human expert review</h3>
-      <p>Every report is reviewed and signed off by a senior SAP professional with 10 or more years of hands-on experience before it reaches you. The AI does the analysis. The expert validates it.</p>
-    </div>
+  </div>
+  <div class="review-note">Every finding across both reports and the dashboard is reviewed and signed off by a senior SAP professional with 10 or more years of hands-on experience before it reaches you. <strong>The AI does the analysis. The expert certifies it.</strong></div>
+</section>
+
+<hr class="divider">
+
+<section class="dashboard-showcase">
+  <div class="section-label">The live dashboard</div>
+  <h2>See your estate the way your team will</h2>
+  <p>Every engagement includes a private, always-on dashboard alongside the two PDFs — not a static export, but six connected views of the same certified assessment, from the boardroom summary down to individual findings and code evidence.</p>
+  <div class="dashboard-video-frame">
+    <video autoplay muted loop playsinline poster="site_assets/dashboard_poster.jpg">
+      <source src="site_assets/dashboard_walkthrough.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="dashboard-views">
+    <div class="dashboard-view-tag"><strong>01</strong>Portfolio</div>
+    <div class="dashboard-view-tag"><strong>02</strong>Executive</div>
+    <div class="dashboard-view-tag"><strong>03</strong>Programmes</div>
+    <div class="dashboard-view-tag"><strong>04</strong>Patterns</div>
+    <div class="dashboard-view-tag"><strong>05</strong>Dependencies</div>
+    <div class="dashboard-view-tag"><strong>06</strong>Cross-Programme</div>
   </div>
 </section>
 
@@ -216,39 +251,39 @@
     </div>
     <div class="step">
       <div class="step-num">03</div>
-      <h3>Receive your report</h3>
-      <p>You receive a professionally formatted PDF report ready to share with your leadership team, IT department, and project stakeholders.</p>
+      <h3>Receive your reports</h3>
+      <p>You receive both PDF reports, professionally formatted and ready to share, plus a private live dashboard link for your whole team — leadership, IT department, and project stakeholders.</p>
     </div>
   </div>
 </section>
 
-<section id="try" style="padding:3rem 4rem;background:#0a0f1a;border-top:1px solid rgba(102,190,227,0.1);">
+<section id="try" style="padding:3rem 4rem;background:#0D0D1E;border-top:1px solid rgba(112,202,246,0.1);">
   <div style="max-width:640px;margin:0 auto;">
-    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#66BEE3;margin-bottom:0.6rem;">Try it now</div>
+    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#70CAF6;margin-bottom:0.6rem;">Try it now</div>
     <h2 style="font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Upload an ABAP file. See your risks in seconds.</h2>
     <p style="font-size:0.875rem;color:rgba(255,255,255,0.55);margin-bottom:2rem;">Drop any ABAP programme and get an instant executive brief — no signup required. For the full RED/AMBER/GREEN report, reviewed by a senior SAP consultant, share your details.</p>
 
     <div id="wgt-step-upload">
-      <div id="wgt-dropzone" onclick="document.getElementById('wgt-file').click()" ondragover="event.preventDefault();this.style.borderColor='#66BEE3'" ondragleave="this.style.borderColor='rgba(102,190,227,0.25)'" ondrop="wgtDrop(event)" style="border:1.5px dashed rgba(102,190,227,0.25);border-radius:10px;padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:border-color 0.15s;">
+      <div id="wgt-dropzone" onclick="document.getElementById('wgt-file').click()" ondragover="event.preventDefault();this.style.borderColor='#70CAF6'" ondragleave="this.style.borderColor='rgba(112,202,246,0.25)'" ondrop="wgtDrop(event)" style="border:1.5px dashed rgba(112,202,246,0.25);border-radius:10px;padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:border-color 0.15s;">
         <div style="font-size:2rem;margin-bottom:0.75rem;">↑</div>
         <div style="font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.4rem;">Drop your ABAP file here</div>
         <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);">or click to browse · .abap, .txt, .prog files accepted</div>
         <input id="wgt-file" type="file" accept=".abap,.txt,.prog" style="display:none" onchange="wgtFileChosen()">
       </div>
-      <div style="text-align:center;margin-top:0.75rem;font-size:0.8rem;color:rgba(255,255,255,0.35);">Don't have a file? <a onclick="wgtRunDemo()" style="color:#66BEE3;cursor:pointer;text-decoration:none;">Run with a demo snippet instead</a></div>
+      <div style="text-align:center;margin-top:0.75rem;font-size:0.8rem;color:rgba(255,255,255,0.35);">Don't have a file? <a onclick="wgtRunDemo()" style="color:#70CAF6;cursor:pointer;text-decoration:none;">Run with a demo snippet instead</a></div>
     </div>
 
     <div id="wgt-step-analysing" style="display:none;text-align:center;padding:2.5rem 0;">
-      <div id="wgt-spinner" style="width:36px;height:36px;border:2.5px solid rgba(102,190,227,0.2);border-top-color:#66BEE3;border-radius:50%;animation:wgtspin 0.8s linear infinite;margin:0 auto 1rem;"></div>
+      <div id="wgt-spinner" style="width:36px;height:36px;border:2.5px solid rgba(112,202,246,0.2);border-top-color:#70CAF6;border-radius:50%;animation:wgtspin 0.8s linear infinite;margin:0 auto 1rem;"></div>
       <p id="wgt-msg" style="font-size:0.875rem;color:rgba(255,255,255,0.5);">Analysing your code...</p>
     </div>
 
     <div id="wgt-step-brief" style="display:none;">
-      <div style="background:rgba(102,190,227,0.05);border:1px solid rgba(102,190,227,0.15);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;">
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#66BEE3;margin-bottom:0.5rem;">Executive brief</div>
+      <div style="background:rgba(112,202,246,0.05);border:1px solid rgba(112,202,246,0.15);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#70CAF6;margin-bottom:0.5rem;">Executive brief</div>
         <div id="wgt-title" style="font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.75rem;"></div>
         <div id="wgt-body" style="font-size:0.875rem;color:rgba(255,255,255,0.65);line-height:1.7;"></div>
-        <div id="wgt-hook" style="font-size:0.875rem;color:#fff;font-weight:500;line-height:1.6;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(102,190,227,0.15);"></div>
+        <div id="wgt-hook" style="font-size:0.875rem;color:#fff;font-weight:500;line-height:1.6;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(112,202,246,0.15);"></div>
       </div>
 
       <div style="display:flex;gap:10px;margin-bottom:1rem;">
@@ -268,7 +303,7 @@
 
       <div id="wgt-banner" style="display:none;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:0.8rem;color:#ef4444;font-weight:500;line-height:1.5;"></div>
 
-      <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(102,190,227,0.12);margin-bottom:1.25rem;">
+      <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(112,202,246,0.12);margin-bottom:1.25rem;">
         <div style="padding:1.25rem;background:rgba(255,255,255,0.02);filter:blur(4px);user-select:none;pointer-events:none;">
           <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px;width:88%;"></div>
           <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px;width:72%;"></div>
@@ -277,45 +312,45 @@
           <div style="height:10px;border-radius:4px;background:rgba(255,255,255,0.08);width:85%;"></div>
         </div>
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <div style="background:rgba(10,15,26,0.9);border:1px solid rgba(102,190,227,0.2);border-radius:10px;padding:10px 20px;text-align:center;">
+          <div style="background:rgba(10,15,26,0.9);border:1px solid rgba(112,202,246,0.2);border-radius:10px;padding:10px 20px;text-align:center;">
             <div style="font-size:1rem;margin-bottom:4px;">🔒</div>
-            <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);font-weight:500;">Full findings — share your details to unlock</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);font-weight:500;">Full report + live dashboard — share your details to unlock</div>
           </div>
         </div>
       </div>
 
-      <button onclick="var s=document.getElementById('wgt-step-brief');var f=document.getElementById('wgt-step-form');var t=s.getBoundingClientRect().top+window.pageYOffset;s.style.display='none';f.style.display='block';window.scrollTo({top:t,behavior:'instant'});" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Get my full report →</button>
+      <button onclick="var s=document.getElementById('wgt-step-brief');var f=document.getElementById('wgt-step-form');var t=s.getBoundingClientRect().top+window.pageYOffset;s.style.display='none';f.style.display='block';window.scrollTo({top:t,behavior:'instant'});" style="width:100%;padding:0.85rem;background:#70CAF6;color:#0D0D1E;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Get my full report →</button>
     </div>
 
     <div id="wgt-step-form" style="display:none;">
-      <div style="background:rgba(102,190,227,0.05);border:1px solid rgba(102,190,227,0.2);border-radius:10px;padding:1.75rem;">
+      <div style="background:rgba(112,202,246,0.05);border:1px solid rgba(112,202,246,0.2);border-radius:10px;padding:1.75rem;">
         <h3 style="font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.25rem;">Where should we send your report?</h3>
         <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;">A senior SAP consultant reviews every report. Delivered within 48 hours.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
           <div>
-            <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Name</label>
-            <input id="wgt-fname" type="text" placeholder="Jane Smith" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+            <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Name</label>
+            <input id="wgt-fname" type="text" placeholder="Jane Smith" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
           </div>
           <div>
-            <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Work email</label>
-            <input id="wgt-femail" type="email" placeholder="jane@company.com" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+            <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Work email</label>
+            <input id="wgt-femail" type="email" placeholder="jane@company.com" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
           </div>
         </div>
         <div style="margin-bottom:0.75rem;">
-          <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Company</label>
-          <input id="wgt-fcompany" type="text" placeholder="Your company name" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+          <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Company</label>
+          <input id="wgt-fcompany" type="text" placeholder="Your company name" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
         </div>
         <div style="margin-bottom:1.25rem;">
-          <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">S/4HANA migration timeline</label>
-          <select id="wgt-fmigration" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;appearance:auto;">
-            <option value="" style="background:#1a2535;color:#fff;">Select timeline...</option>
-            <option style="background:#1a2535;color:#fff;">Within 12 months</option>
-            <option style="background:#1a2535;color:#fff;">1–2 years</option>
-            <option style="background:#1a2535;color:#fff;">2+ years</option>
-            <option style="background:#1a2535;color:#fff;">Not planned yet</option>
+          <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">S/4HANA migration timeline</label>
+          <select id="wgt-fmigration" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;appearance:auto;">
+            <option value="" style="background:#1a1a35;color:#fff;">Select timeline...</option>
+            <option style="background:#1a1a35;color:#fff;">Within 12 months</option>
+            <option style="background:#1a1a35;color:#fff;">1–2 years</option>
+            <option style="background:#1a1a35;color:#fff;">2+ years</option>
+            <option style="background:#1a1a35;color:#fff;">Not planned yet</option>
           </select>
         </div>
-        <button onclick="wgtSubmit()" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Send me the full report →</button>
+        <button onclick="wgtSubmit()" style="width:100%;padding:0.85rem;background:#70CAF6;color:#0D0D1E;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;">Send me the full report →</button>
         <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:0.75rem;text-align:center;">Your code stays confidential. We never share it.</p>
       </div>
     </div>
@@ -352,7 +387,7 @@ function wgtFileChosen() {
 
 function wgtDrop(e) {
   e.preventDefault();
-  document.getElementById('wgt-dropzone').style.borderColor = 'rgba(102,190,227,0.25)';
+  document.getElementById('wgt-dropzone').style.borderColor = 'rgba(112,202,246,0.25)';
   var f = e.dataTransfer.files[0];
   if (!f) return;
   var r = new FileReader();
@@ -435,45 +470,49 @@ function wgtSubmit() {
     <p>A sample S/4HANA readiness assessment on a custom asset depreciation programme — anonymised but based on real ABAP code.</p>
     <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.75rem;">
       <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-        <span style="color:#66BEE3;font-size:1rem;margin-top:1px;">✓</span>
+        <span style="color:#70CAF6;font-size:1rem;margin-top:1px;">✓</span>
         <span style="font-size:0.875rem;color:rgba(255,255,255,0.65);">Executive Brief — plain-English leadership summary with risk rating</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-        <span style="color:#66BEE3;font-size:1rem;margin-top:1px;">✓</span>
+        <span style="color:#70CAF6;font-size:1rem;margin-top:1px;">✓</span>
         <span style="font-size:0.875rem;color:rgba(255,255,255,0.65);">RED and AMBER findings with code evidence and business impact</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-        <span style="color:#66BEE3;font-size:1rem;margin-top:1px;">✓</span>
+        <span style="color:#70CAF6;font-size:1rem;margin-top:1px;">✓</span>
         <span style="font-size:0.875rem;color:rgba(255,255,255,0.65);">Remediation scope estimate with developer days per finding</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-        <span style="color:#66BEE3;font-size:1rem;margin-top:1px;">✓</span>
+        <span style="color:#70CAF6;font-size:1rem;margin-top:1px;">✓</span>
         <span style="font-size:0.875rem;color:rgba(255,255,255,0.65);">Reviewed by a senior SAP professional before delivery</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+        <span style="color:#70CAF6;font-size:1rem;margin-top:1px;">✓</span>
+        <span style="font-size:0.875rem;color:rgba(255,255,255,0.65);">Plus a private live dashboard link with every engagement</span>
       </div>
     </div>
   </div>
   <div style="flex:1;min-width:280px;">
-    <div id="leadForm" style="background:rgba(102,190,227,0.05);border:1px solid rgba(102,190,227,0.2);border-radius:10px;padding:1.75rem;">
+    <div id="leadForm" style="background:rgba(112,202,246,0.05);border:1px solid rgba(112,202,246,0.2);border-radius:10px;padding:1.75rem;">
       <h3 style="font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.25rem;">Download the sample report</h3>
       <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;">Enter your details and it downloads instantly.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
         <div>
-          <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Full Name</label>
-          <input id="fname" type="text" placeholder="Jane Smith" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;" />
+          <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Full Name</label>
+          <input id="fname" type="text" placeholder="Jane Smith" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;" />
           <span id="fname_err" style="display:none;font-size:0.72rem;color:#ef4444;margin-top:0.25rem;">Required</span>
         </div>
         <div>
-          <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Work Email</label>
-          <input id="femail" type="email" placeholder="jane@company.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;" />
+          <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Work Email</label>
+          <input id="femail" type="email" placeholder="jane@company.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;" />
           <span id="femail_err" style="display:none;font-size:0.72rem;color:#ef4444;margin-top:0.25rem;">Required</span>
         </div>
       </div>
       <div style="margin-bottom:1.25rem;">
-        <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Company</label>
-        <input id="fcompany" type="text" placeholder="Your company name" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;" />
+        <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Company</label>
+        <input id="fcompany" type="text" placeholder="Your company name" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;" />
         <span id="fcompany_err" style="display:none;font-size:0.72rem;color:#ef4444;margin-top:0.25rem;">Required</span>
       </div>
-      <button onclick="handleDownload()" style="width:100%;background:#66BEE3;color:#1B1B30;padding:0.75rem 1.5rem;border-radius:8px;font-size:0.95rem;font-weight:600;border:none;cursor:pointer;display:block;text-align:center;white-space:nowrap;">Download Sample Report →</button>
+      <button onclick="handleDownload()" style="width:100%;background:#70CAF6;color:#14142C;padding:0.75rem 1.5rem;border-radius:8px;font-size:0.95rem;font-weight:600;border:none;cursor:pointer;display:block;text-align:center;white-space:nowrap;">Download Sample Report →</button>
       <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:0.75rem;text-align:center;">No spam. We may follow up on your download.</p>
     </div>
     <div id="downloadConfirm" style="display:none;margin-top:1rem;text-align:center;">
@@ -496,7 +535,7 @@ function handleDownload() {
       if (err) err.style.display = 'block';
       valid = false;
     } else {
-      field.style.borderColor = 'rgba(102,190,227,0.25)';
+      field.style.borderColor = 'rgba(112,202,246,0.25)';
       if (err) err.style.display = 'none';
     }
   });
@@ -531,13 +570,13 @@ function handleDownload() {
       </div>
       <ul class="price-features">
         <li>Full S/4HANA readiness or Z code analysis</li>
-        <li>Executive Brief for leadership</li>
+        <li>Executive Assessment for leadership</li>
         <li>RED, AMBER and GREEN findings with evidence</li>
       </ul>
       <ul class="price-features">
+        <li>Live interactive dashboard, private link</li>
         <li>Remediation scope estimate in developer days</li>
         <li>Human expert review and sign-off</li>
-        <li>Delivered within 3 to 5 business days</li>
       </ul>
     </div>
   </div>
@@ -551,18 +590,18 @@ function handleDownload() {
   <p>Whether you have one programme to review or an entire estate to assess, we will explain exactly how Vivrta.IO can help.</p>
   <div id="contact-form" style="max-width:480px;margin:0 auto;text-align:left;">
     <div style="margin-bottom:0.75rem;">
-      <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Name</label>
-      <input id="cf-name" type="text" placeholder="Jane Smith" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+      <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Name</label>
+      <input id="cf-name" type="text" placeholder="Jane Smith" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
     </div>
     <div style="margin-bottom:0.75rem;">
-      <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Work email</label>
-      <input id="cf-email" type="email" placeholder="jane@company.com" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
+      <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Work email</label>
+      <input id="cf-email" type="email" placeholder="jane@company.com" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;">
     </div>
     <div style="margin-bottom:0.75rem;">
-      <label style="display:block;font-size:0.78rem;color:#66BEE3;margin-bottom:0.3rem;">Message</label>
-      <textarea id="cf-message" placeholder="Tell us about your SAP landscape or ask us anything..." rows="4" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(102,190,227,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;resize:vertical;font-family:inherit;"></textarea>
+      <label style="display:block;font-size:0.78rem;color:#70CAF6;margin-bottom:0.3rem;">Message</label>
+      <textarea id="cf-message" placeholder="Tell us about your SAP landscape or ask us anything..." rows="4" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(112,202,246,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:#fff;font-size:0.85rem;outline:none;resize:vertical;font-family:inherit;"></textarea>
     </div>
-    <button onclick="cfSubmit()" style="width:100%;padding:0.85rem;background:#66BEE3;color:#0a0f1a;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;white-space:nowrap;">Send message →</button>
+    <button onclick="cfSubmit()" style="width:100%;padding:0.85rem;background:#70CAF6;color:#0D0D1E;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;white-space:nowrap;">Send message →</button>
   </div>
   <div id="contact-success" style="display:none;margin-top:1.5rem;">
     <div style="font-size:1.5rem;margin-bottom:0.5rem;">✓</div>
